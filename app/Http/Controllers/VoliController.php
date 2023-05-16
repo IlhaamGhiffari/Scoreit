@@ -38,6 +38,7 @@ class VoliController extends Controller
         $voli->set1 = $request->input('set1');
         $voli->score2 = $request->input('score2');
         $voli->set2 = $request->input('set2');
+        $voli->note = $request->input('note');
         $voli->user()->associate($user);
         $voli->save();
     

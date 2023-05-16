@@ -1,3 +1,10 @@
+<?php
+use App\Models\Voli;
+use Illuminate\Support\Facades\Auth;
+$user = Auth::user();
+$history = Voli::where('user_id', $user->id)->get();
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -29,13 +36,6 @@
                 <p class="text-white text-[50px] text-center" name="away" >
                     AWAY
                 </p>
-            </div>
-            <div class="row-start-1 col-start-10">
-                <div class="container mt-10 mx-auto border-4 rounded-2xl max-w-[100px]">
-                <P class="text-white text-[30px] flex justify-center items-center text-center">
-                    HISTORY
-                </P>
-                </div>
             </div>
             <div class="col-start-2 col-end-4 row-span-3">
                 <div class="container mb-[15px] max-w-[400px] max-h-[350px] border-4 border-white rounded-2xl flex justify-center">
@@ -133,12 +133,73 @@
     <div class="form-input mt-4">
         <label>Away set</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="set2">
     </div>
-   
-   
 
+    <div class="form-input mt-4">
+        <label>note</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="text" name="note">
+    </div>
     
-    <button class="border-white border-4 p-4 rounded-lg hover:border-gray-900">Submit</button>
-  </form>
+    <button class="border-white border-4 p-2 mt-4 rounded-lg hover:border-gray-900">Submit</button>
+</form>
+
+<div class="relative overflow-x-auto m-10">
+    <table class="w-full text-sm text-left text-white ">
+        <thead class="text-xl text-white uppercase bg-[#212121]">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Home Team
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Score
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Set
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Away Team
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    score
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    set
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    notes
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if ($history)
+            @foreach ($history as $his)
+                
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ $his->home }}
+                </th>
+                <td class="px-6 py-4">
+                    {{ $his->score1 }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $his->set1 }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $his->away }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $his->score2 }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $his->set2 }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $his->note }}
+                </td>
+            </tr>
+            @endforeach
+            @endif
+        </tbody>
+    </table>
+</div>
 
   <script>
     const score1Element = document.getElementById('score1');
