@@ -46,20 +46,21 @@
             </div>
         </div>
        
-        <div class="row-start-2 col-start-4 col-end-5">
+        <button class="row-start-2 col-start-4 col-end-5">
             <div class="container mb-[15px] mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
-                <button id="set1" class="text-white text-[85px] flex justify-center items-center text-center">
+                <P id="set1" class="text-white text-[85px] flex justify-center items-center text-center">
                     0
-                </button>  
+                </P>  
             </div>
-        </div>
-        <div class="row-start-2 col-start-7 col-end-8">
+        </button>
+
+        <button class="row-start-2 col-start-7 col-end-8">
             <div class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
-                <button  id="set2" class="text-white text-[85px] flex justify-center items-center text-center">
+                <P id="set2" class="text-white text-[85px] flex justify-center items-center text-center">
                     0
-                </button>  
+                </P>  
             </div>
-        </div>
+        </button>
         
         <div class="col-start-8 col-end-10  row-span-3">
             <div class="container max-w-[400px] max-h-[350px] border-4 border-white rounded-2xl flex justify-center">
