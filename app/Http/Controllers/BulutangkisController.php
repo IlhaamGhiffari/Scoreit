@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\bulutangkis;
+use App\Models\Bulutangkis;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\user;
 
-class BulutangkisController extends Controller
+class VoliController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('bulutangkis');
     }
 
     /**
@@ -28,38 +30,23 @@ class BulutangkisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+        $voli = new Bulutangkis();
+        $voli->home = $request->input('home');
+        $voli->away = $request->input('away');
+        $voli->score1 = $request->input('score1');
+        $voli->set1 = $request->input('set1');
+        $voli->score2 = $request->input('score2');
+        $voli->set2 = $request->input('set2');
+        $voli->note = $request->input('note');
+        $voli->user()->associate($user);
+        $voli->save();
+    
+        // Redirect or perform any additional actions after saving the data
+    
+        // For example, redirect back to the form
+        return redirect('/bulutangkis');
     }
+    
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(bulutangkis $bulutangkis)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(bulutangkis $bulutangkis)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, bulutangkis $bulutangkis)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(bulutangkis $bulutangkis)
-    {
-        //
-    }
 }

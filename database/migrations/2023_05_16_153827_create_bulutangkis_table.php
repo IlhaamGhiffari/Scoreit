@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        
         Schema::create('bulutangkis', function (Blueprint $table) {
             $table->id();
             $table->string('home');
@@ -19,7 +20,12 @@ return new class extends Migration
             $table->integer('set1');
             $table->integer('score2');
             $table->integer('set2');
+            $table->string('note');
             $table->timestamps();
+        });
+        Schema::table('bulutangkis', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

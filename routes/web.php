@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VoliController;
+use App\Http\Controllers\BulutangkisController;
 
 
 /*
@@ -37,11 +38,10 @@ Route::get('/stopwatch', function () {
 
 
 
- Route::get('/bulutangkis', function () {
-    return view('bulutangkis');
- });
+
 
  Route::resource('/voli', VoliController::class);
+ Route::resource('/bulutangkis', BulutangkisController::class);
  
  
 

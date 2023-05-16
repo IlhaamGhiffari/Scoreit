@@ -16,6 +16,7 @@ class voli extends Model
         'set1',
         'score2',
         'set2',
+        'note',
         'user_id',
     ];
 

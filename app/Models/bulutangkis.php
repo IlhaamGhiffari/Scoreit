@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class voli extends Model
+class bulutangkis extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'home',
         'away',
@@ -16,6 +15,7 @@ class voli extends Model
         'set1',
         'score2',
         'set2',
+        'note',
         'user_id',
     ];
 

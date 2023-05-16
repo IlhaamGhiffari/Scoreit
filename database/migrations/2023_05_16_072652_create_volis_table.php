@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('set1');
             $table->integer('score2');
             $table->integer('set2');
+            $table->string('note');
             $table->timestamps();
         });
     }
@@ -29,5 +30,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('volis');
+        
     }
 };
