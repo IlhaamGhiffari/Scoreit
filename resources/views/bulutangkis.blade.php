@@ -20,11 +20,11 @@
   <div class="container mx-auto  bg-[#212121] rounded-2xl">
     <div class="grid grid-cols-10 grid-rows-5">
         <div class="col-start-2 col-end-4">
-            <p class="text-white text-[50px] text-center">
+            <p contentEditable="true" class="text-white text-[50px] text-center">
                 HOME
             </p>
         </div>
-        <div class="col-start-8 col-end-10">
+        <div contentEditable="true" class="col-start-8 col-end-10">
             <p class="text-white text-[50px] text-center">
                 AWAY
             </p>
