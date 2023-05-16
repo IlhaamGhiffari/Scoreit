@@ -24,7 +24,7 @@
                 HOME
             </p>
         </div>
-        <div class="col-start-8 col-end-10">
+        <div contentEditable="true" class="col-start-8 col-end-10">
             <p class="text-white text-[50px] text-center">
                 AWAY
             </p>
