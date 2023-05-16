@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VoliController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,13 +35,13 @@ Route::get('/stopwatch', function () {
     return view('basket');
  });
 
- Route::get('/voli', function () {
-    return view('voli');
- });
+
 
  Route::get('/bulutangkis', function () {
     return view('bulutangkis');
  });
+
+ Route::resource('/voli', VoliController::class);
  
  
 
