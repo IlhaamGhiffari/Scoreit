@@ -32,9 +32,9 @@
 
         <div class="row-start-1 col-start-10">
             <div class="container mt-10 mx-auto border-4 rounded-2xl max-w-[100px]">
-            <P class="text-white text-[30px] flex justify-center items-center text-center">
+            <p class="text-white text-[30px] flex justify-center items-center text-center">
                 HISTORY
-            </P>  
+            </p>  
             </div>
         </div>
 
@@ -49,10 +49,10 @@
             <p class="text-white text-center">
                 Babak
             </p>
-            <button id=babak"class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
-                <P  class="text-white text-[85px] flex justify-center items-center text-center">
+            <button id="babak" class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
+                <p class="text-white text-[85px] flex justify-center items-center text-center">
                     0
-                </P>
+                </p>
             </button>
         </div>
             

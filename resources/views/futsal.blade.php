@@ -45,6 +45,7 @@
                 </p>
             </div>
         </div>
+
         <div class="row-start-2 col-start-5 col-end-7 col-span-2 ">
             <p class="text-white text-center">
                 Babak
@@ -55,6 +56,7 @@
                 </P>
             </button>
         </div>
+        
         <div class="row-start-3 col-start-4 col-end-6">
             <p class="text-white text-center">
                 Foul
@@ -78,23 +80,23 @@
         
         <div class="col-start-8 col-end-10  row-span-3">
             <div class="container max-w-[400px] max-h-[350px] border-4 border-white rounded-2xl flex justify-center">
-                <p id="score2" class="text-white text-[400px] flex justify-center items-center text-center">
-                    0
-                </p>
+            <p id="score2" class="text-white text-[400px] flex justify-center items-center text-center">
+                0
+            </p>
             </div>
         </div>
 
-        <button id="homemin" class="row-start-5 col-start-2 ">
+        <button class="row-start-5 col-start-2 ">
             <div class="container mx-auto border-4 rounded-2xl max-w-[80px]">
-            <P class="text-white text-[40px] flex justify-center items-center text-center">
+            <P id="homemin"class="text-white text-[40px] flex justify-center items-center text-center">
                 -1
             </P>  
             </div>
         </button>
 
-        <button id="homeplus" class="row-start-5 col-start-3 ">
+        <button class="row-start-5 col-start-3 ">
             <div class="container mx-auto border-4 rounded-2xl max-w-[80px]">
-            <P class="text-white text-[40px] flex justify-center items-center text-center">
+            <P id="homeplus" class="text-white text-[40px] flex justify-center items-center text-center">
                 +1
             </P>  
             </div>
@@ -139,8 +141,8 @@
     const foulawayElement = document.getElementById('foulaway');
     const resetElement = document.getElementById('reset');
 
-        // Initialize the scores
-        let score1 = 0;
+    // Initialize the scores
+    let score1 = 0;
     let score2 = 0;
     let babak = 0;
 

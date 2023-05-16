@@ -13,7 +13,7 @@
     <a href="{{ url('/dashboard') }}">
         <img class=" object-none object-center scale-75 transition duration-150 hover:transform hover:scale-100" src="./Home.png">
     </a>
-    <p class="text-white  text-[65px] justify-self-center">VOLI</p>
+    <p class="text-white  text-[65px] justify-self-center">SEPAK BOLA</p>
     <img class="object-none object-center scale-50 justify-self-end	" src="Logo.png">
   </div>
 
@@ -39,72 +39,66 @@
         </div>
 
         <div class="col-start-2 col-end-4 row-span-3">
-            <div class="container mb-[15px] max-w-[400px] max-h-[350px] border-4 border-white rounded-2xl flex justify-center">
+            <div class="container max-w-[400px] max-h-[350px] border-4 border-white rounded-2xl flex justify-center">
                 <p id="score1" class="text-white text-[400px] flex justify-center items-center text-center">
                     0
                 </p>
             </div>
         </div>
-       
-        <button class="row-start-2 col-start-4 col-end-5">
-            <div class="container mb-[15px] mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
-                <P id="set1" class="text-white text-[85px] flex justify-center items-center text-center">
-                    0
-                </P>  
-            </div>
-        </button>
-
-        <button class="row-start-2 col-start-7 col-end-8">
+        <div class="row-start-2 col-start-5 col-end-7 col-span-2 ">
+            <p class="text-white text-center">
+                Babak
+            </p>
             <div class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
-                <P id="set2" class="text-white text-[85px] flex justify-center items-center text-center">
+                <button  id="babak" class="text-white text-[85px] flex justify-center items-center text-center">
                     0
-                </P>  
+                </button>
             </div>
-        </button>
-        
+        </div>
+            
         <div class="col-start-8 col-end-10  row-span-3">
             <div class="container max-w-[400px] max-h-[350px] border-4 border-white rounded-2xl flex justify-center">
-                <p id="score2" class="text-white text-[400px] flex justify-center items-center text-center">
+                <p id="score2"  class="text-white text-[400px] flex justify-center items-center text-center">
                     0
                 </p>
             </div>
         </div>
 
-        <button class="row-start-5 col-start-2 ">
+        <button id="homemin" class="row-start-5 col-start-2 ">
             <div class="container mx-auto border-4 rounded-2xl max-w-[80px]">
-            <P id="homemin" class="text-white text-[40px] flex justify-center items-center text-center">
+            <P class="text-white text-[40px] flex justify-center items-center text-center">
                 -1
             </P>  
             </div>
         </button>
 
-        <button class="row-start-5 col-start-3 ">
+        <button id="homeplus" class="row-start-5 col-start-3 ">
             <div class="container mx-auto border-4 rounded-2xl max-w-[80px]">
-            <P id="homeplus" class="text-white text-[40px] flex justify-center items-center text-center">
+            <P class="text-white text-[40px] flex justify-center items-center text-center">
                 +1
             </P>  
             </div>
         </button>
-        
+
         <button id="reset" class="row-start-5 col-start-5 col-end-7 ">
             <div class="container mx-auto border-4 rounded-2xl max-w-[100px]">
-            <P  class="text-white text-[40px] flex justify-center items-center text-center">
+            <P class="text-white text-[40px] flex justify-center items-center text-center">
                 RESET
             </P>  
             </div>
         </button>
 
-        <button class="row-start-5 col-start-8 ">
+        <button id="awaymin" class="row-start-5 col-start-8 ">
             <div class="container mx-auto border-4 rounded-2xl max-w-[80px]">
-            <P id="awaymin" class="text-white text-[40px] flex justify-center items-center text-center">
+            <P class="text-white text-[40px] flex justify-center items-center text-center">
                 -1
             </P>  
             </div>
         </button>
 
-        <button class="row-start-5 col-start-9 ">
+        <button id="awayplus" class="row-start-5 col-start-9 ">
             <div class="container mx-auto border-4 rounded-2xl max-w-[80px]">
-            <P id="awayplus" class="text-white text-[40px] flex justify-center items-center text-center">
+            <P class="text-white text-[40px] flex justify-center items-center text-center">
                 +1
             </P>  
             </div>
@@ -115,11 +109,10 @@
 
   <script>
     const score1Element = document.getElementById('score1');
-    const set1Element = document.getElementById('set1');
     const homeplusElement = document.getElementById('homeplus');
     const homeminElement = document.getElementById('homemin');
+    const babakElement = document.getElementById('babak');
     const score2Element = document.getElementById('score2');
-    const set2Element = document.getElementById('set2');
     const awayplusElement = document.getElementById('awayplus');
     const awayminElement = document.getElementById('awaymin');
     const resetElement = document.getElementById('reset');
@@ -127,9 +120,7 @@
     // Initialize the scores
     let score1 = 0;
     let score2 = 0;
-    let set1 = 0;
-    let set2 = 0;
-
+    let babak = 0;
 
     // Button click event listeners
     homeplusElement.addEventListener('click', () => {
@@ -142,9 +133,9 @@
       score1Element.textContent = score1;
     });
 
-    set1Element.addEventListener('click', () => {
-      set1++;
-      set1Element.textContent = set1;
+    babakElement.addEventListener('click', () => {
+      babak++;
+      babakElement.textContent = babak;
     });
 
     awayplusElement.addEventListener('click', () => {
@@ -156,23 +147,14 @@
       score2--;
       score2Element.textContent = score2;
     });
-
-    set2Element.addEventListener('click', () => {
-      set2++;
-      set2Element.textContent = set2;
-    });
-
-
-
+    
     resetElement.addEventListener('click', () => {
       score1 = 0;
       score2 = 0;
-      set1 = 0;
-      set2 = 0;
+      babak = 0;
       score1Element.textContent = score1;
       score2Element.textContent = score2;
-      set1Element.textContent = set1;
-      set2Element.textContent = set2;
+      babakElement.textContent = Babak;
     });
   </script>
 </body>
