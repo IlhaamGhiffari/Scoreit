@@ -1,3 +1,10 @@
+<?php
+use App\Models\Bola;
+use Illuminate\Support\Facades\Auth;
+$user = Auth::user();
+$history = Bola::where('user_id', $user->id)->get();
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -32,9 +39,9 @@
 
         <div class="row-start-1 col-start-10">
             <div class="container mt-10 mx-auto border-4 rounded-2xl max-w-[100px]">
-            <p class="text-white text-[30px] flex justify-center items-center text-center">
+            <P class="text-white text-[30px] flex justify-center items-center text-center">
                 HISTORY
-            </p>  
+            </P>  
             </div>
         </div>
 
@@ -49,16 +56,16 @@
             <p class="text-white text-center">
                 Babak
             </p>
-            <button id="babak" class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
-                <p class="text-white text-[85px] flex justify-center items-center text-center">
+            <div class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
+                <button  id="babak" class="text-white text-[85px] flex justify-center items-center text-center">
                     0
-                </p>
-            </button>
+                </button>
+            </div>
         </div>
             
-        <div id="babak" class="col-start-8 col-end-10  row-span-3">
+        <div class="col-start-8 col-end-10  row-span-3">
             <div class="container max-w-[400px] max-h-[350px] border-4 border-white rounded-2xl flex justify-center">
-                <p id="score2" class="text-white text-[400px] flex justify-center items-center text-center">
+                <p id="score2"  class="text-white text-[400px] flex justify-center items-center text-center">
                     0
                 </p>
             </div>
@@ -88,24 +95,107 @@
             </div>
         </button>
 
-        <buttom id="awaymin" class="row-start-5 col-start-8 ">
+        <button id="awaymin" class="row-start-5 col-start-8 ">
             <div class="container mx-auto border-4 rounded-2xl max-w-[80px]">
             <P class="text-white text-[40px] flex justify-center items-center text-center">
                 -1
             </P>  
             </div>
-        </buttom>
+        </button>
 
-        <buttom id="awayplus" class="row-start-5 col-start-9 ">
+        <button id="awayplus" class="row-start-5 col-start-9 ">
             <div class="container mx-auto border-4 rounded-2xl max-w-[80px]">
             <P class="text-white text-[40px] flex justify-center items-center text-center">
                 +1
             </P>  
             </div>
-        </buttom>
+        </button>
 
     </div>
   </div>
+
+  <form method="POST"  action="{{ config('') }}/bola" class="bg-[#212121] mt-10 rounded-xl mx-10 text-white text-xl p-4 flex-cols justify-items-center">
+    @csrf
+    <h1> Create Match History</h1>
+    <div class="form-input">
+        <label>Home Team</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="text" name="home">
+    </div>
+
+    <div class="form-input mt-4">
+        <label>Home Score</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="score1">
+    </div>
+    <div class="form-input mt-4">
+        <label>Babak</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="babak">
+    </div>
+
+    <div class="form-input mt-6">
+        <label>Away Team</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="text" name="away">
+    </div>
+
+    <div class="form-input mt-4">
+        <label>Away Score</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="score2">
+    </div>
+
+    <div class="form-input mt-4">
+        <label>note</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="text" name="note">
+    </div>
+    
+    <button class="border-white border-4 p-2 mt-4 rounded-lg hover:border-gray-900">Submit</button>
+</form>
+
+<div class="relative overflow-x-auto m-10">
+    <table class="w-full text-sm text-left text-white ">
+        <thead class="text-xl text-white uppercase bg-[#212121]">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Babak
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Home Team
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Score
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    score
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Away Team
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    notes
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if ($history)
+            @foreach ($history as $his)
+                
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ $his->babak }}
+                </th>
+                <td class="px-6 py-4">
+                    {{ $his->home }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $his->score1 }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $his->score2 }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $his->away }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $his->note }}
+                </td>
+            </tr>
+            @endforeach
+            @endif
+        </tbody>
+    </table>
+</div>
 
   <script>
     const score1Element = document.getElementById('score1');
@@ -123,7 +213,7 @@
     let babak = 0;
 
     // Button click event listeners
-    homeplusElement.addEventLibabastener('click', () => {
+    homeplusElement.addEventListener('click', () => {
       score1++;
       score1Element.textContent = score1;
     });
