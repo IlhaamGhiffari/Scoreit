@@ -32,9 +32,9 @@
 
         <div class="row-start-1 col-start-10">
             <div class="container mt-10 mx-auto border-4 rounded-2xl max-w-[100px]">
-            <P class="text-white text-[30px] flex justify-center items-center text-center">
+            <p class="text-white text-[30px] flex justify-center items-center text-center">
                 HISTORY
-            </P>  
+            </p>  
             </div>
         </div>
 
@@ -49,20 +49,20 @@
             <p class="text-white text-center">
                 Babak
             </p>
-            <div class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
-                <P id="score2" class="text-white text-[85px] flex justify-center items-center text-center">
+            <button id="babak" class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
+                <p class="text-white text-[85px] flex justify-center items-center text-center">
                     0
-                </P>
-            </div>
+                </p>
+            </button>
         </div>
             
-        <button id="babak" class="col-start-8 col-end-10  row-span-3">
+        <div id="babak" class="col-start-8 col-end-10  row-span-3">
             <div class="container max-w-[400px] max-h-[350px] border-4 border-white rounded-2xl flex justify-center">
-                <p class="text-white text-[400px] flex justify-center items-center text-center">
+                <p id="score2" class="text-white text-[400px] flex justify-center items-center text-center">
                     0
                 </p>
             </div>
-        </button>
+        </div>
 
         <button id="homemin" class="row-start-5 col-start-2 ">
             <div class="container mx-auto border-4 rounded-2xl max-w-[80px]">
@@ -123,7 +123,7 @@
     let babak = 0;
 
     // Button click event listeners
-    homeplusElement.addEventListener('click', () => {
+    homeplusElement.addEventLibabastener('click', () => {
       score1++;
       score1Element.textContent = score1;
     });
@@ -134,7 +134,7 @@
     });
 
     babakElement.addEventListener('click', () => {
-      babal++;
+      babak++;
       babakElement.textContent = babak;
     });
 
@@ -154,7 +154,7 @@
       babak = 0;
       score1Element.textContent = score1;
       score2Element.textContent = score2;
-      babakElement.textContent = Babak;
+      babakElement.textContent = babak;
     });
   </script>
 </body>
