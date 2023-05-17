@@ -1,3 +1,10 @@
+<?php
+use App\Models\Bola;
+use Illuminate\Support\Facades\Auth;
+$user = Auth::user();
+$history = Bola::where('user_id', $user->id)->get();
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -48,31 +55,31 @@
             <p class="text-white  text-[30px] text-center">
                 Babak
             </p>
-            <button class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
-                <P id="babak" class="text-white text-[85px] flex justify-center items-center text-center">
+            <div class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
+                <button id="babak" class="text-white text-[85px] flex justify-center items-center text-center">
                     0
-                </P>
-            </button>
+                </button>
+            </div>
         </div>
         <div class="row-start-3 col-start-4 col-end-6">
             <p class="text-[30px] text-white text-center">
                 Foul
             </p>
-            <button id="foulhome" class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
-                <P class="text-white text-[85px] flex justify-center items-center text-center">
+            <div class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
+                <button id="foulhome" class="text-white text-[85px] flex justify-center items-center text-center">
                     0
-                </P>  
-            </button>
+                </button>  
+            </div>
         </div>
         <div class="row-start-3 col-start-6 col-end-8">
             <p class="text-[30px] text-white text-center">
                 Foul
             </p>
-            <button id="foulaway" class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
-                <P class="text-white text-[85px] flex justify-center items-center text-center">
+            <div  class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
+                <button id="foulaway" class="text-white text-[85px] flex justify-center items-center text-center">
                     0
-                </P>  
-            </button>
+                </button>  
+            </div>
         </div>
         
         <div class="col-start-8 col-end-10  row-span-3">
@@ -110,13 +117,14 @@
             </button>
         </div>
         
-        <div class="row-start-5 col-start-5 col-end-7 ">
-            <button id="reset" class="container mx-auto border-4 rounded-2xl max-w-[100px]">
-            <P class="text-white text-[40px] flex justify-center items-center text-center">
+        <div class="row-start-5 col-start-5 col-end-7 col-span-2 flex justify-center">
+            <button id="reset" class="container mx-auto border-4 rounded-2xl max-w-[100px] h-1/2">
+              <P class="text-white text-[40px] flex justify-center items-center text-center">
                 RESET
-            </P>  
+              </P>  
             </button>
-        </div>
+          </div>
+          
 
         <div class="row-start-5 col-start-8 col-span-2 flex justify-center">
             <button id="awayplus1" class="container mx-auto border-4 rounded-2xl max-w-[80px] max-h-[80px]">
@@ -125,16 +133,16 @@
             </P>  
             </button>
 
-            <buttom class="container mx-auto border-4 rounded-2xl max-w-[80px] max-h-[80px]">
+            <button class="container mx-auto border-4 rounded-2xl max-w-[80px] max-h-[80px]">
                 <P id="awayplus2" class="text-white text-[40px] flex justify-center items-center text-center">
                     +2
                 </P>  
-            </buttom>
-            <buttom id="awayplus3" class="container mx-auto border-4 rounded-2xl max-w-[80px] max-h-[80px]">
+            </button>
+            <button id="awayplus3" class="container mx-auto border-4 rounded-2xl max-w-[80px] max-h-[80px]">
                 <P class="text-white text-[40px] flex justify-center items-center text-center">
                     +3
                 </P>  
-            </buttom>   
+            </button>   
         </div>
 
         <div class="row-start-6 col-start-8 col-span-2 flex justify-center ">
@@ -148,6 +156,89 @@
     </div>
   </div>
 
+  <form method="POST"  action="{{ config('') }}/basket" class="bg-[#212121] mt-10 rounded-xl mx-10 text-white text-xl p-4 flex-cols justify-items-center">
+    @csrf
+    <h1> Create Match History</h1>
+    <div class="form-input">
+        <label>Home Team</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="text" name="home">
+    </div>
+
+    <div class="form-input mt-4">
+        <label>Home Score</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="score1">
+    </div>
+    <div class="form-input mt-4">
+        <label>Babak</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="babak">
+    </div>
+
+    <div class="form-input mt-6">
+        <label>Away Team</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="text" name="away">
+    </div>
+
+    <div class="form-input mt-4">
+        <label>Away Score</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="score2">
+    </div>
+
+    <div class="form-input mt-4">
+        <label>note</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="text" name="note">
+    </div>
+    
+    <button class="border-white border-4 p-2 mt-4 rounded-lg hover:border-gray-900">Submit</button>
+</form>
+
+<div class="relative overflow-x-auto m-10">
+    <table class="w-full text-sm text-left text-white ">
+        <thead class="text-xl text-white uppercase bg-[#212121]">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Babak
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Home Team
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Score
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    score
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Away Team
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    notes
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if ($history)
+            @foreach ($history as $his)
+                
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ $his->babak }}
+                </th>
+                <td class="px-6 py-4">
+                    {{ $his->home }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $his->score1 }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $his->score2 }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $his->away }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $his->note }}
+                </td>
+            </tr>
+            @endforeach
+            @endif
+        </tbody>
+    </table>
+</div>
+
   <script>
     const score1Element = document.getElementById('score1');
     const babakElement = document.getElementById('babak');
@@ -155,12 +246,12 @@
     const foulawayElement = document.getElementById('foulaway');
     const homeplus1Element = document.getElementById('homeplus1');
     const homeplus2Element = document.getElementById('homeplus2');
-    const homeplu3sElement = document.getElementById('homeplus3');
+    const homeplus3Element = document.getElementById('homeplus3');
     const homeminElement = document.getElementById('homemin');
     const score2Element = document.getElementById('score2');
     const awayplus1Element = document.getElementById('awayplus1');
-    const awayplus1Element = document.getElementById('awayplus2');
-    const awayplus1Element = document.getElementById('awayplus3');
+    const awayplus2Element = document.getElementById('awayplus2');
+    const awayplus3Element = document.getElementById('awayplus3');
     const awayminElement = document.getElementById('awaymin');
     const resetElement = document.getElementById('reset'); 
     
@@ -178,12 +269,12 @@
     });
 
     homeplus2Element.addEventListener('click', () => {
-      score1+=2;
+      score1 += 2;
       score1Element.textContent = score1;
     });
 
     homeplus3Element.addEventListener('click', () => {
-      score1+=3;
+      score1 += 3;
       score1Element.textContent = score1;
     });
 
@@ -192,9 +283,19 @@
       score1Element.textContent = score1;
     });
 
-    babak.addEventListener('click', () => {
+    babakElement.addEventListener('click', () => {
       babak++;
-      set1Element.textContent = babak;
+      babakElement.textContent = babak;
+    });
+
+    foulhomeElement.addEventListener('click', () => {
+      foulhome++;
+      foulhomeElement.textContent = foulhome;
+    });
+
+    foulawayElement.addEventListener('click', () => {
+      foulaway++;
+      foulawayElement.textContent = foulaway;
     });
 
     awayplus1Element.addEventListener('click', () => {
@@ -203,12 +304,12 @@
     });
 
     awayplus2Element.addEventListener('click', () => {
-      score2+=2;
+      score2 += 2;
       score2Element.textContent = score2;
     });
 
     awayplus3Element.addEventListener('click', () => {
-      score2+=3;
+      score2 += 3;
       score2Element.textContent = score2;
     });
 

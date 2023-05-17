@@ -1,3 +1,10 @@
+<?php
+use App\Models\Futsal;
+use Illuminate\Support\Facades\Auth;
+$user = Auth::user();
+$history = Futsal::where('user_id', $user->id)->get();
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -50,32 +57,32 @@
             <p class="text-white text-center">
                 Babak
             </p>
-            <button id="babak" class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
-                <P class="text-white text-[85px] flex justify-center items-center text-center">
+            <div class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
+                <button id="babak"  class="text-white text-[85px] flex justify-center items-center text-center">
                     0
-                </P>
-            </button>
+                </button>
+            </div>
         </div>
         
         <div class="row-start-3 col-start-4 col-end-6">
             <p class="text-white text-center">
                 Foul
             </p>
-            <button id="foulhome" class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
-                <P class="text-white text-[85px] flex justify-center items-center text-center">
+            <div class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
+                <button id="foulhome" class="text-white text-[85px] flex justify-center items-center text-center">
                     0
-                </P>  
-            </button>
+                </button>  
+            </div>
         </div>
         <div class="row-start-3 col-start-6 col-end-8">
             <p class="text-white text-center">
                 Foul
             </p>
-            <button id="foulaway" class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
-                <P class="text-white text-[85px] flex justify-center items-center text-center">
+            <div  class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
+                <button id="foulaway" class="text-white text-[85px] flex justify-center items-center text-center">
                     0
-                </P>  
-            </button>
+                </button>  
+            </div>
         </div>
         
         <div class="col-start-8 col-end-10  row-span-3">
@@ -129,6 +136,89 @@
     </div>
   </div>
 
+  <form method="POST"  action="{{ config('') }}/futsal" class="bg-[#212121] mt-10 rounded-xl mx-10 text-white text-xl p-4 flex-cols justify-items-center">
+    @csrf
+    <h1> Create Match History</h1>
+    <div class="form-input">
+        <label>Home Team</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="text" name="home">
+    </div>
+
+    <div class="form-input mt-4">
+        <label>Home Score</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="score1">
+    </div>
+    <div class="form-input mt-4">
+        <label>Babak</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="babak">
+    </div>
+
+    <div class="form-input mt-6">
+        <label>Away Team</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="text" name="away">
+    </div>
+
+    <div class="form-input mt-4">
+        <label>Away Score</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="score2">
+    </div>
+
+    <div class="form-input mt-4">
+        <label>note</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="text" name="note">
+    </div>
+    
+    <button class="border-white border-4 p-2 mt-4 rounded-lg hover:border-gray-900">Submit</button>
+</form>
+
+<div class="relative overflow-x-auto m-10">
+    <table class="w-full text-sm text-left text-white ">
+        <thead class="text-xl text-white uppercase bg-[#212121]">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Babak
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Home Team
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Score
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    score
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Away Team
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    notes
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if ($history)
+            @foreach ($history as $his)
+                
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ $his->babak }}
+                </th>
+                <td class="px-6 py-4">
+                    {{ $his->home }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $his->score1 }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $his->score2 }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $his->away }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $his->note }}
+                </td>
+            </tr>
+            @endforeach
+            @endif
+        </tbody>
+    </table>
+</div>
+
   <script>
     const score1Element = document.getElementById('score1');
     const homeplusElement = document.getElementById('homeplus');
@@ -145,6 +235,8 @@
     let score1 = 0;
     let score2 = 0;
     let babak = 0;
+    let foulhome = 0;
+    let foulaway = 0;
 
     // Button click event listeners
     homeplusElement.addEventListener('click', () => {

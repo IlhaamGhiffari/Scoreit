@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bulutangkis;
+use App\Models\Basket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\user;
 
-class BulutangkisController extends Controller
+class BasketController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('bulutangkis');
+        return view('basket');
     }
 
     /**
@@ -31,20 +31,20 @@ class BulutangkisController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        $voli = new Bulutangkis();
-        $voli->home = $request->input('home');
-        $voli->away = $request->input('away');
-        $voli->score1 = $request->input('score1');
-        $voli->score2 = $request->input('score2');
-        $voli->set = $request->input('set');
-        $voli->note = $request->input('note');
-        $voli->user()->associate($user);
-        $voli->save();
+        $basket = new Basket();
+        $basket->home = $request->input('home');
+        $basket->away = $request->input('away');
+        $basket->score1 = $request->input('score1');
+        $basket->babak = $request->input('babak');
+        $basket->score2 = $request->input('score2');
+        $basket->note = $request->input('note');
+        $basket->user()->associate($user);
+        $basket->save();
     
         // Redirect or perform any additional actions after saving the data
     
         // For example, redirect back to the form
-        return redirect('/bulutangkis');
+        return redirect('/basket');
     }
     
 

@@ -25,7 +25,6 @@ $history = Voli::where('user_id', $user->id)->get();
   </div>
 
   <div class="container mx-auto  bg-[#212121] rounded-2xl">
-<<<<<<< HEAD
     <div class="grid grid-cols-10 grid-rows-5">
         <div class="col-start-2 col-end-4">
             <p contentEditable="true" class="text-white text-[50px] text-center">
@@ -101,49 +100,6 @@ $history = Voli::where('user_id', $user->id)->get();
             <P class="text-white text-[40px] flex justify-center items-center text-center">
                 -1
             </P>  
-=======
-   
-        <div class="grid grid-cols-10 grid-rows-5">
-            <div class="col-start-2 col-end-4">
-                <p contentEditable="true" class="text-white text-[50px] text-center"> 
-                    HOME
-                </p>
-            </div>
-            <div contentEditable="true" class="col-start-8 col-end-10">
-                <p class="text-white text-[50px] text-center" name="away" >
-                    AWAY
-                </p>
-            </div>
-            <div class="col-start-2 col-end-4 row-span-3">
-                <div class="container mb-[15px] max-w-[400px] max-h-[350px] border-4 border-white rounded-2xl flex justify-center">
-                    <p id="score1" class="text-white text-[400px] flex justify-center items-center text-center">
-                        0
-                    </p>
-                </div>
-            </div>
-        
-            <div class="row-start-2 col-start-4 col-end-5">
-                <div class="container mb-[15px] mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
-                    <button id="set1" class="text-white text-[85px] flex justify-center items-center text-center">
-                        0
-                    </button>
-                </div>
-            </div>
-            <div class="row-start-2 col-start-7 col-end-8">
-                <div class="container mx-auto border-4 rounded-2xl max-w-[100px] max-h-[100px] flex justify-center">
-                    <button  id="set2" class="text-white text-[85px] flex justify-center items-center text-center">
-                        0
-                    </button>
-                </div>
-            </div>
-        
-            <div class="col-start-8 col-end-10  row-span-3">
-                <div class="container max-w-[400px] max-h-[350px] border-4 border-white rounded-2xl flex justify-center">
-                    <p id="score2" class="text-white text-[400px] flex justify-center items-center text-center">
-                        0
-                    </p>
-                </div>
->>>>>>> master
             </div>
             <button class="row-start-5 col-start-2 ">
                 <div class="container mx-auto border-4 rounded-2xl max-w-[80px]">
@@ -183,7 +139,6 @@ $history = Voli::where('user_id', $user->id)->get();
             </button>
             <br>
 
-<<<<<<< HEAD
         <button id="awayplus" class="row-start-5 col-start-9 ">
             <div class="container mx-auto border-4 rounded-2xl max-w-[80px]">
             <P class="text-white text-[40px] flex justify-center items-center text-center">
@@ -191,9 +146,6 @@ $history = Voli::where('user_id', $user->id)->get();
             </P>  
             </div>
         </button>
-=======
- 
->>>>>>> master
 
     </div>
   </div>
@@ -207,9 +159,6 @@ $history = Voli::where('user_id', $user->id)->get();
     <div class="form-input mt-4">
         <label>Home Score</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="score1">
     </div>
-    <div class="form-input mt-4">
-        <label>Home set</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="set1">
-    </div>
 
     <div class="form-input mt-6">
         <label>Away Team</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="text" name="away">
@@ -219,7 +168,7 @@ $history = Voli::where('user_id', $user->id)->get();
         <label>Away Score</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="score2">
     </div>
     <div class="form-input mt-4">
-        <label>Away set</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="set2">
+        <label>set</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="set">
     </div>
 
     <div class="form-input mt-4">
@@ -234,22 +183,19 @@ $history = Voli::where('user_id', $user->id)->get();
         <thead class="text-xl text-white uppercase bg-[#212121]">
             <tr>
                 <th scope="col" class="px-6 py-3">
+                    set
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Home Team
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Score
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Set
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Away Team
-                </th>
-                <th scope="col" class="px-6 py-3">
                     score
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    set
+                    Away Team
                 </th>
                 <th scope="col" class="px-6 py-3">
                     notes
@@ -262,22 +208,19 @@ $history = Voli::where('user_id', $user->id)->get();
                 
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ $his->home }}
+                    {{ $his->set }}
                 </th>
                 <td class="px-6 py-4">
+                    {{ $his->home }}
+                </td>
+                <td class="px-6 py-4">
                     {{ $his->score1 }}
-                </td>
-                <td class="px-6 py-4">
-                    {{ $his->set1 }}
-                </td>
-                <td class="px-6 py-4">
-                    {{ $his->away }}
                 </td>
                 <td class="px-6 py-4">
                     {{ $his->score2 }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ $his->set2 }}
+                    {{ $his->away }}
                 </td>
                 <td class="px-6 py-4">
                     {{ $his->note }}

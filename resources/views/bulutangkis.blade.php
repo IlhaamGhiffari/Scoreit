@@ -119,9 +119,6 @@ $history = bulutangkis::where('user_id', $user->id)->get();
     <div class="form-input mt-4">
         <label>Home Score</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="score1">
     </div>
-    <div class="form-input mt-4">
-        <label>Home set</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="set1">
-    </div>
 
     <div class="form-input mt-6">
         <label>Away Team</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="text" name="away">
@@ -131,7 +128,7 @@ $history = bulutangkis::where('user_id', $user->id)->get();
         <label>Away Score</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="score2">
     </div>
     <div class="form-input mt-4">
-        <label>Away set</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="set2">
+        <label>set</label> <input class="border-4 border-white rounded-md ml-6 bg-black" type="number" name="set">
     </div>
 
     <div class="form-input mt-4">
@@ -146,22 +143,19 @@ $history = bulutangkis::where('user_id', $user->id)->get();
         <thead class="text-xl text-white uppercase bg-[#212121]">
             <tr>
                 <th scope="col" class="px-6 py-3">
+                    set
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Home Team
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Score
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Set
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Away Team
-                </th>
-                <th scope="col" class="px-6 py-3">
                     score
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    set
+                    Away Team
                 </th>
                 <th scope="col" class="px-6 py-3">
                     notes
@@ -174,22 +168,19 @@ $history = bulutangkis::where('user_id', $user->id)->get();
                 
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ $his->home }}
+                    {{ $his->set }}
                 </th>
                 <td class="px-6 py-4">
+                    {{ $his->home }}
+                </td>
+                <td class="px-6 py-4">
                     {{ $his->score1 }}
-                </td>
-                <td class="px-6 py-4">
-                    {{ $his->set1 }}
-                </td>
-                <td class="px-6 py-4">
-                    {{ $his->away }}
                 </td>
                 <td class="px-6 py-4">
                     {{ $his->score2 }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ $his->set2 }}
+                    {{ $his->away }}
                 </td>
                 <td class="px-6 py-4">
                     {{ $his->note }}

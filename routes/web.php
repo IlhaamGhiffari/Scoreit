@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VoliController;
+use App\Http\Controllers\BolaController;
+use App\Http\Controllers\FutsalController;
+use App\Http\Controllers\BasketController;
 use App\Http\Controllers\BulutangkisController;
+
 
 
 /*
@@ -24,9 +28,6 @@ Route::get('/stopwatch', function () {
     return view('stopwatch');
  });
 
- Route::get('/bola', function () {
-    return view('bola');
- });
 
  Route::get('/futsal', function () {
     return view('futsal');
@@ -42,6 +43,10 @@ Route::get('/stopwatch', function () {
 
  Route::resource('/voli', VoliController::class);
  Route::resource('/bulutangkis', BulutangkisController::class);
+ Route::resource('/bola', BolaController::class);
+ Route::resource('/futsal', FutsalController::class);
+ Route::resource('/basket', BasketController::class);
+
  
  
 
