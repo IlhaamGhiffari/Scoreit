@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\voli;
+use App\Models\Voli;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\user;
 
 class VoliController extends Controller
 {
@@ -13,7 +14,7 @@ class VoliController extends Controller
      */
     public function index()
     {
-        //
+        return view('voli');
     }
 
     /**
@@ -37,15 +38,21 @@ class VoliController extends Controller
         $voli->set1 = $request->input('set1');
         $voli->score2 = $request->input('score2');
         $voli->set2 = $request->input('set2');
+        $voli->note = $request->input('note');
         $voli->user()->associate($user);
-    
         $voli->save();
+    
+        // Redirect or perform any additional actions after saving the data
+    
+        // For example, redirect back to the form
+        return redirect('/voli');
     }
+    
 
     /**
      * Display the specified resource.
      */
-    public function show(voli $voli)
+    public function show(Voli $voli)
     {
         //
     }
@@ -53,7 +60,7 @@ class VoliController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(voli $voli)
+    public function edit(Voli $voli)
     {
         //
     }
@@ -69,7 +76,7 @@ class VoliController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(voli $voli)
+    public function destroy(Voli $voli)
     {
         //
     }

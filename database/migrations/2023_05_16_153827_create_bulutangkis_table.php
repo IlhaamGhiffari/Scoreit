@@ -11,7 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('volis', function (Blueprint $table) {
+        
+        Schema::create('bulutangkis', function (Blueprint $table) {
             $table->id();
             $table->string('home');
             $table->string('away');
@@ -19,7 +20,12 @@ return new class extends Migration
             $table->integer('set1');
             $table->integer('score2');
             $table->integer('set2');
+            $table->string('note');
             $table->timestamps();
+        });
+        Schema::table('bulutangkis', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -28,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('volis');
+        Schema::dropIfExists('bulutangkis');
     }
 };
