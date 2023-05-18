@@ -37,14 +37,6 @@ $history = Bola::where('user_id', $user->id)->get();
             </p>
         </div>
 
-        <div class="row-start-1 col-start-10">
-            <div class="container mt-10 mx-auto border-4 rounded-2xl max-w-[100px]">
-            <P class="text-white text-[30px] flex justify-center items-center text-center">
-                HISTORY
-            </P>  
-            </div>
-        </div>
-
         <div class="col-start-2 col-end-4 row-span-3">
             <div class="container max-w-[400px] max-h-[350px] border-4 border-white rounded-2xl flex justify-center">
                 <p id="score1" class="text-white text-[400px] flex justify-center items-center text-center">
