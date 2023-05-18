@@ -43,10 +43,8 @@
         </p>
         <div class="container">
           <p class="text-white text-[24px] max-w-[700px] text-justify">
-            Proin at nunc neque. Nulla ac felis varius,
-            posuere justo vitae, finibus purus. Suspendisse id bibendum eros.
-            Mauris molestie velit ut ante sodales gravida. Curabitur iaculis vulputate tellus ut aliquam.
-            Integer dui purus, lobortis ac mauris vitae, lacinia imperdiet odio.
+              ScoreIt adalah sebuah aplikasi web yang menghadirkan papan skor digital untuk mencatat dan menampilkan catatan pertandingan dengan mudah. Dengan antarmuka yang intuitif, Anda dapat memasukkan skor, dan mencatat hasil pertandingan. Aplikasi ini tentunya berbeda dengan papan skor fisik dimana aplikisi ini memberikan kemudahan  dalam mencatat informasi hasil pertandingan, serta menampilkannya dalam sebuah tabel, menjadikan pengalaman pertandingan lebih modern dan interaktif.
+              Aplikasi ini Mempunyai fitur stopwatch dan 5 olahraga yaitu, Sepak Bola, Futsal, Basket, Voli, dan Bulutangkis
           </p>
         </div>
         <div class="mt-[50px] grid grid-cols-3 gap-10">

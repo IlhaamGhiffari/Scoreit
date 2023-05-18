@@ -1,4 +1,5 @@
 <x-app-layout>
+<!-- menggunakan layout yang sudah memuat navbar -->
 
     <div class="bg-[#3d3d3d] min-h-screen">
         <<!doctype html>
