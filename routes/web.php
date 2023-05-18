@@ -29,22 +29,14 @@ Route::get('/stopwatch', function () {
  });
 
 
- Route::get('/futsal', function () {
-    return view('futsal');
- });
-
- Route::get('/basket', function () {
-    return view('basket');
- });
-
-
-
-
-
  Route::resource('/voli', VoliController::class);
+
  Route::resource('/bulutangkis', BulutangkisController::class);
+
  Route::resource('/bola', BolaController::class);
+
  Route::resource('/futsal', FutsalController::class);
+ 
  Route::resource('/basket', BasketController::class);
 
  
