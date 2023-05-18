@@ -16,9 +16,8 @@ return new class extends Migration
             $table->string('home');
             $table->string('away');
             $table->integer('score1');
-            $table->integer('set1');
             $table->integer('score2');
-            $table->integer('set2');
+            $table->integer('set');
             $table->string('note');
             $table->timestamps();
         });

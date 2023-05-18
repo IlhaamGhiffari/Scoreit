@@ -1,8 +1,8 @@
 <?php
-use App\Models\Bola;
+use App\Models\Basket;
 use Illuminate\Support\Facades\Auth;
 $user = Auth::user();
-$history = Bola::where('user_id', $user->id)->get();
+$history = Basket::where('user_id', $user->id)->get();
 ?>
 
 <!doctype html>
