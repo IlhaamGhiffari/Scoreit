@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 17, 2023 at 06:20 AM
+-- Generation Time: May 18, 2023 at 10:43 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -195,7 +195,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('kL2EYImvw9AGbzmqHuQ08tmvEKMlbwPYYTRowS5J', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoieVdKaE1pOHNraUJzeUM3OGdLNTRvMjF0dG1pZzdLUGNxMk1VMWdEMSI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozMToiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2Rhc2hib2FyZCI7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI2OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYm9sYSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1684297160);
+('wdMOyXHLm0Dsk5Tq114UR7nNV0YObQjFLhUKsbMh', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoidlFkRzIwYjFaamV3enJaZ094ejhUbmdjMFJWVGtGTXlJVnVRMkdZOCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJHp1OTA0bzA0OG9vYmxZQTlKa0dEaU9BbkdPZW1wMFBEMHE1WmFLUE5ONFpnbE11LmVCTFplIjt9', 1684399068);
 
 -- --------------------------------------------------------
 
@@ -219,6 +219,13 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(1, 'a', 'a@a.com', NULL, '$2y$10$zu904o048ooblYA9JkGDiOAnGOemp0PD0q5ZaKPNN4ZglMu.eBLZe', NULL, NULL, NULL, NULL, NULL, NULL, '2023-05-18 01:37:34', '2023-05-18 01:37:34');
+
 -- --------------------------------------------------------
 
 --
@@ -230,14 +237,20 @@ CREATE TABLE `volis` (
   `home` varchar(191) NOT NULL,
   `away` varchar(191) NOT NULL,
   `score1` int(11) NOT NULL,
-  `set1` int(11) NOT NULL,
   `score2` int(11) NOT NULL,
-  `set2` int(11) NOT NULL,
+  `set` int(11) NOT NULL,
   `note` varchar(191) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `volis`
+--
+
+INSERT INTO `volis` (`id`, `home`, `away`, `score1`, `score2`, `set`, `note`, `created_at`, `updated_at`, `user_id`) VALUES
+(1, 'tim a', 'Tim b', 1, 1, 1, 'Tim a menang', '2023-05-18 01:37:46', '2023-05-18 01:37:46', 1);
 
 --
 -- Indexes for dumped tables
@@ -370,13 +383,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `volis`
 --
 ALTER TABLE `volis`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
